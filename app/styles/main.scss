@@ -1,28 +1,636 @@
-.browserupgrade {
-  margin: 0.2em 0;
-  background: #ccc;
-  color: #000;
-  padding: 0.2em 0;
-}
+@import "variables.scss";
+@import "fonts.scss";
+@import "reset.scss";
+// bower:scss
+// endbower
 
 body {
-  background: #fafafa;
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  color: #333;
+  font-family: $primary-font;
+  font-size: $font-fize;
+  color: $black;
 }
 
-.hero-unit {
-  margin: 50px auto 0 auto;
-  width: 300px;
-  font-size: 18px;
-  font-weight: 200;
-  line-height: 30px;
-  background-color: #eee;
-  border-radius: 6px;
-  padding: 60px;
-  h1 {
-    font-size: 60px;
-    line-height: 1;
-    letter-spacing: -1px;
+.container {
+  margin: 0 auto;
+
+  @include respond-to(handhelds-min) {
+    max-width: 400px;
+    width: 100%;
+    padding: 0;
+  }
+
+  @include respond-to(medium-min) {
+    max-width: 720px;
+    padding: 0 40px;
+  }
+
+  @include respond-to(large-min) {
+    max-width: 935px;
+    padding: 0 50px;
+  }
+}
+
+.md-visible {
+  display: none;
+}
+
+.sm-visible {
+  display: none;
+}
+
+.md-hidden {
+  @include respond-to(large-max) {
+    display: none !important;
+  }
+}
+
+.md-visible {
+  @include respond-to(large-max) {
+    display: block !important;
+  }
+}
+
+.sm-visible {
+  @include respond-to(medium-max) {
+    display: block !important;
+  }
+}
+
+.sm-hidden {
+  @include respond-to(medium-max) {
+    display: none !important;
+  }
+}
+
+.d-flex {
+  display: flex;
+}
+
+.fxw-w {
+  flex-wrap: wrap;
+}
+
+.fxs0 {
+  flex-shrink: 0;
+}
+
+.section-header {
+  font-size: 22px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+
+  @include respond-to(medium-max) {
+    text-align: center;
+  }
+}
+
+.price {
+  span {
+    display: inline-block;
+    font-weight: 700;
+
+    &.old-price {
+      text-decoration: line-through;
+      margin-right: 25px;
+      color: $black;
+
+      &.single-price {
+        margin-right: 0;
+        text-decoration: none;
+      }
+    }
+
+    &.discount-price {
+      color: $red;
+    }
+  }
+}
+
+.rating {
+  i {
+    color: #ababab;
+
+    &.fill {
+      color: $red;
+    }
+  }
+}
+
+.goods-card {
+  padding-top: 30px;
+
+  .goods-name {
+    font-size: 24px;
+    font-family: $secondary-font;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+
+    @include respond-to(medium-max) {
+      padding: 0 40px;
+    }
+  }
+
+  .goods-wrap {
+    margin-bottom: 60px;
+
+    @include respond-to(medium-max) {
+      flex-wrap: wrap;
+      margin-bottom: 45px;
+    }
+  }
+
+  .goods-wrap-img {
+    width: 400px;
+    height: 420px;
+    background-color: #eaf2f4;
+    margin-right: 55px;
+    position: relative;
+
+    @include respond-to(large-max) {
+      width: 335px;
+      margin-right: 15px;
+    }
+
+    @include respond-to(medium-max) {
+      width: 100%;
+      margin-right: 0;
+      margin-bottom: 20px;
+    }
+
+    .goods-wrap-img-share-list {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      z-index: 1;
+
+      li {
+        margin-bottom: 10px;
+
+        a {
+          display: block;
+          text-decoration: none;
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          color: $blue;
+          border: 2px solid $blue;
+          text-align: center;
+          transition: all .3s;
+
+          &:before {
+            display: block;
+            position: relative;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+          }
+
+          &:hover {
+            color: #fff;
+            background-color: $blue;
+          }
+        }
+      }
+    }
+
+    img {
+      display: block;
+      position: relative;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  .goods-wrap-info {
+    .goods-wrap-info-name {
+      font-size: 24px;
+      font-family: $secondary-font;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .goods-wrap-info-id {
+      font-size: 10px;
+      opacity: .7;
+      margin-bottom: 28px;
+
+      @include respond-to(medium-max) {
+        margin-bottom: 10px;
+      }
+    }
+
+    .goods-wrap-info-price {
+      font-size: 24px;
+      margin-bottom: 12px;
+
+      @include respond-to(large-max) {
+        font-size: 36px;
+      }
+    }
+
+    .goods-wrap-info-rating {
+      display: inline-block;
+      margin-right: 15px;
+    }
+
+    .share-btn {
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: 700;
+      color: $blue;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    .goods-wrap-info-details {
+      font-size: 12px;
+      color: #282828;
+      margin-top: 32px;
+      margin-bottom: 20px;
+      line-height: 1.3em;
+
+      .options-name {
+        font-size: 14px;
+        font-weight: 700;
+        margin-bottom: 10px;
+      }
+
+      @include respond-to(medium-max) {
+        margin-top: 0;
+
+      }
+    }
+
+    .share-container {
+      display: inline-block;
+      position: relative;
+
+      .share-list {
+        position: absolute;
+        top: calc(100% + 6px);
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: #fff;
+        width: 290px;
+        text-align: center;
+        padding: 20px;
+        box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.75);
+        z-index: 1;
+        display: none;
+
+        li {
+          display: inline-block;
+
+          a {
+            display: block;
+            text-decoration: none;
+            color: $blue;
+            height: 40px;
+            border-color: transparent;
+            transition: all .3s;
+
+            &:not(.icon-close) {
+              width: 40px;
+              border: 2px solid $blue;
+              border-radius: 50%;
+
+              &:hover {
+                border-color: transparent;
+                background-color: $blue;
+                color: #fff;
+              }
+            }
+
+            &:before {
+              display: block;
+              position: relative;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+            }
+          }
+
+          &:not(:last-child) {
+            margin-right: 10px;
+          }
+
+          @include respond-to(medium-max) {
+            text-align: center;
+          }
+        }
+
+        &:before {
+          content: '';
+          display: block;
+          position: absolute;
+          top: 0;
+          left: 50%;
+          transform-origin: 0 0;
+          transform: translateX(-50%) rotate(135deg);
+          width: 0;
+          height: 0;
+          border-style: solid;
+          border-width: 4px 4px 4px 4px;
+          border-color: transparent transparent #fff #fff;
+          box-shadow: -2px 2px 1px 0 rgba(0, 0, 0, 0.4);
+
+          @include respond-to(medium-max) {
+            display: none;
+          }
+        }
+
+        &.open {
+          display: block;
+        }
+
+        @include respond-to(medium-max) {
+          position: static;
+          display: block;
+          left: inherit;
+          top: inherit;
+          width: inherit;
+          background-color: transparent;
+          box-shadow: inherit;
+          transform: none;
+          padding-left: 0;
+          padding-right: 0;
+          text-align: left;
+        }
+      }
+    }
+
+    .goods-wrap-options {
+      align-items: center;
+      margin-bottom: 15px;
+
+      @include respond-to(medium-max) {
+        flex-wrap: wrap;
+        margin-bottom: 30px;
+      }
+
+      .options-name {
+        text-transform: uppercase;
+        font-size: 14px;
+        font-weight: 700;
+        min-width: 55px;
+        display: flex;
+
+        span {
+          margin-right: 5px;
+        }
+
+        @include respond-to(medium-max) {
+          width: 100%;
+          margin-bottom: 10px;
+        }
+      }
+
+      .options-item {
+        margin-left: 15px;
+
+        input[type="radio"] {
+          display: none;
+
+          &:checked+label {
+            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, .5);
+          }
+        }
+
+        label {
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          line-height: 40px;
+          display: block;
+          cursor: pointer;
+          transition: all .3s;
+        }
+
+        &.size {
+          label {
+            border: 1px solid #ccc;
+            background-color: #fff;
+            text-align: center;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+          }
+        }
+
+        &.color {
+          label {
+            &[for="color-blue"] {
+              background-color: #77d8e7;
+            }
+
+            &[for="color-green"] {
+              background-color: #96c795;
+            }
+
+            &[for="color-pink"] {
+              background-color: #ce92a1;
+            }
+
+            &[for="color-violet"] {
+              background-color: #aa93cf;
+            }
+          }
+        }
+
+        @include respond-to(large-max) {
+          margin-left: 10px;
+        }
+
+        @include respond-to(medium-max) {
+          &:first-of-type {
+            margin-left: 0;
+          }
+        }
+      }
+    }
+
+    input[type="submit"] {
+      border-color: transparent;
+      border-style: solid;
+      background-color: $lightblue;
+      text-transform: uppercase;
+      font-size: 14px;
+      font-weight: 700;
+      padding: 14px 59px;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: all .3s;
+
+      &:hover {
+        border-color: $lightblue;
+        background-color: transparent;
+      }
+
+      @include respond-to(large-max) {
+        font-size: 18px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+      }
+
+      @include respond-to(medium-max) {
+        display: block;
+        margin: 0 auto;
+      }
+    }
+
+    @include respond-to(medium-max) {
+      padding: 0 40px;
+    }
+  }
+}
+
+.similar-goods-wrap {
+  position: relative;
+  margin: 0 -10px;
+
+  .similar-goods-item {
+    margin: 0 10px 25px;
+    width: calc(33.3% - 20px);
+    text-decoration: none;
+    transition: all .3s;
+
+    .similar-goods-img {
+      position: relative;
+      height: 265px;
+      margin-bottom: 12px;
+      overflow: hidden;
+      transition: all .3s;
+
+      @include respond-to(large-max) {
+        height: 285px;
+      }
+
+      @include respond-to(medium-max) {
+        height: 265px;
+      }
+
+      img {
+        display: block;
+        position: relative;
+
+        @include respond-to(large-max) {
+          width: 100%;
+        }
+      }
+    }
+
+    .similar-goods-price {
+      position: absolute;
+      bottom: 20px;
+      right: 0;
+      font-size: 16px;
+      background-color: $lightblue;
+      padding: 3px 10px;
+
+      @include respond-to(large-max) {
+        bottom: 0;
+        width: 100%;
+        text-align: center;
+        opacity: .8;
+        font-size: 22px;
+        padding-top: 4px;
+        padding-bottom: 4px;
+      }
+    }
+
+    .similar-goods-name {
+      font-size: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
+      text-align: center;
+      color: $black;
+
+      @include respond-to(large-max) {
+        font-size: 16px;
+      }
+    }
+
+    &:hover {
+      .similar-goods-img {
+        box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, .5);
+      }
+    }
+
+    &.active {
+      display: block;
+    }
+
+    @include respond-to(large-max) {
+      margin-right: 20px;
+      margin-left: 20px;
+      width: calc(50% - 40px);
+    }
+
+    @include respond-to(medium-max) {
+      display: none;
+      width: 100%;
+      margin-left: 0;
+      margin-right: 0;
+    }
+  }
+
+  @include respond-to(large-max) {
+    margin-left: -20px;
+    margin-right: -20px;
+  }
+
+  @include respond-to(medium-max) {
+    margin-left: 0;
+    margin-right: 0;
+    padding: 0 55px;
+  }
+}
+
+.slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 0;
+  cursor: pointer;
+  padding: 0;
+  border: none;
+  background: transparent;
+  font-size: 50px;
+  color: #949494;
+  outline: none;
+  transition: all .3s;
+
+  &:before {
+    display: block;
+  }
+
+  &:hover {
+    color: #000;
+  }
+
+  &.next-btn {
+    left: inherit;
+    right: 0;
+  }
+}
+
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  from {
+    opacity: .4
+  }
+
+  to {
+    opacity: 1
   }
 }

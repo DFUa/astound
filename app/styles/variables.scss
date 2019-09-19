@@ -1,0 +1,53 @@
+//fonts
+$primary-font: "OpenSans";
+$secondary-font: "Oswald";
+$font-fize: 16px;
+
+//color
+$black: #2c303d;
+$red: #ce2c52;
+$blue: #2c87ce;
+$lightblue: #8ae6cf;
+
+//breakpoints
+$break-large: 935px;
+$break-medium: 720px;
+$break-handhelds: 400px;
+
+@mixin respond-to($media) {
+  @if $media==handhelds-max {
+    @media (max-width: $break-handhelds - 1) {
+      @content;
+    }
+  }
+
+  @else if $media==medium-max {
+    @media (max-width: $break-medium - 1) {
+      @content;
+    }
+  }
+
+  @else if $media==large-max {
+    @media (max-width: $break-large - 1) {
+      @content;
+    }
+  }
+
+  @else if $media==handhelds-min {
+    @media (min-width: $break-handhelds) {
+      @content;
+    }
+  }
+
+  @else if $media==medium-min {
+    @media (min-width: $break-medium) {
+      @content;
+    }
+  }
+
+  @else if $media==large-min {
+    @media (min-width: $break-large) {
+      @content;
+    }
+  }
+}
